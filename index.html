@@ -679,18 +679,19 @@ CARD SELECT
 ====================================
 */
 
+<script>
 function selectCard(name){
+...
+}
+  document.getElementById("selectedCard").innerText = name;
 
-document.getElementById("selectedCard")
-.innerText=name;
-
-document.getElementById("payment")
-.scrollIntoView({
-behavior:"smooth"
-});
+  document.getElementById("payment").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 
 }
-
+</script>
 
 /*
 ====================================
