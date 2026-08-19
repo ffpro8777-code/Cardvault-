@@ -1,464 +1,689 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CardVault — Gift Cards</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<title>CardVault Gaming</title>
 
-    body {
-      background: #0b0d12;
-      color: #fff;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
 
-    header {
-      background: #11141b;
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #252936;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+body{
+  background:#080a10;
+  color:#fff;
+}
 
-    .logo {
-      font-size: 24px;
-      font-weight: 800;
-      color: #7c5cff;
-    }
+header{
+  background:#11141c;
+  border-bottom:1px solid #292d38;
+  padding:17px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
 
-    nav a {
-      color: #bbb;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 14px;
-    }
+.logo{
+  color:#8065ff;
+  font-size:24px;
+  font-weight:800;
+}
 
-    nav a:hover {
-      color: #fff;
-    }
+nav a{
+  color:#bbb;
+  text-decoration:none;
+  margin-left:18px;
+  font-size:14px;
+}
 
-    .hero {
-      text-align: center;
-      padding: 70px 20px 50px;
-      background:
-        radial-gradient(circle at top, #21184a 0%, #0b0d12 55%);
-    }
+.hero{
+  text-align:center;
+  padding:65px 20px;
+  background:radial-gradient(circle at top,#251951,#080a10 60%);
+}
 
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 14px;
-    }
+.hero h1{
+  font-size:40px;
+  margin-bottom:12px;
+}
 
-    .hero p {
-      color: #a7a9b2;
-      max-width: 600px;
-      margin: auto;
-      line-height: 1.6;
-    }
+.hero p{
+  color:#a4a8b3;
+  line-height:1.6;
+}
 
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
-    }
+.container{
+  width:92%;
+  max-width:1050px;
+  margin:auto;
+}
 
-    .section-title {
-      margin: 35px 0 20px;
-      font-size: 25px;
-    }
+.title{
+  margin:35px 0 20px;
+}
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
 
-    .product {
-      background: #141720;
-      border: 1px solid #272b38;
-      border-radius: 16px;
-      padding: 20px;
-      transition: .2s;
-    }
+.card{
+  background:#141720;
+  border:1px solid #292e3a;
+  border-radius:16px;
+  padding:18px;
+}
 
-    .product:hover {
-      transform: translateY(-4px);
-      border-color: #7055e8;
-    }
+.card-image{
+  height:130px;
+  background:linear-gradient(135deg,#292052,#151822);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:52px;
+}
 
-    .product-icon {
-      height: 110px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #27204e, #151822);
-      font-size: 42px;
-      margin-bottom: 16px;
-    }
+.card h3{
+  margin:15px 0 8px;
+}
 
-    .product h3 {
-      margin-bottom: 8px;
-    }
+.card p{
+  color:#999eaa;
+  font-size:14px;
+  min-height:38px;
+}
 
-    .product p {
-      color: #999eaa;
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
+.price{
+  font-size:21px;
+  font-weight:bold;
+  margin:15px 0 8px;
+}
 
-    .price {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+.stock{
+  color:#36d39a;
+  font-size:13px;
+  margin-bottom:14px;
+}
 
-    button {
-      border: none;
-      cursor: pointer;
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-weight: bold;
-    }
+.buy{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:9px;
+  background:#8065ff;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .buy-btn {
-      width: 100%;
-      background: #7c5cff;
-      color: white;
-    }
+.buy:hover{
+  background:#6e51e9;
+}
 
-    .buy-btn:hover {
-      background: #6848e8;
-    }
+.payment{
+  max-width:650px;
+  margin:55px auto;
+  background:#13161e;
+  border:1px solid #292e3a;
+  border-radius:18px;
+  padding:24px;
+}
 
-    .payment {
-      margin: 50px auto;
-      background: #141720;
-      border: 1px solid #292d39;
-      border-radius: 18px;
-      padding: 25px;
-      max-width: 650px;
-    }
+.payment h2{
+  margin-bottom:8px;
+}
 
-    .payment h2 {
-      margin-bottom: 10px;
-    }
+.subtitle{
+  color:#969ba7;
+  font-size:14px;
+  margin-bottom:20px;
+}
 
-    .payment-subtitle {
-      color: #999eaa;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
+.selected{
+  background:#1b1e28;
+  border-radius:10px;
+  padding:13px;
+  margin-bottom:18px;
+  color:#c8cbd4;
+}
 
-    .method {
-      border: 1px solid #303443;
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 12px;
-      cursor: pointer;
-    }
+.method{
+  border:1px solid #303542;
+  border-radius:11px;
+  padding:16px;
+  margin:10px 0;
+  cursor:pointer;
+}
 
-    .method:hover {
-      border-color: #7c5cff;
-    }
+.method:hover{
+  border-color:#8065ff;
+}
 
-    .method strong {
-      display: block;
-      margin-bottom: 5px;
-    }
+.method strong{
+  display:block;
+  margin-bottom:5px;
+}
 
-    .method span {
-      color: #9ca1ad;
-      font-size: 13px;
-    }
+.method span{
+  color:#999eaa;
+  font-size:13px;
+}
 
-    .order-box {
-      display: none;
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid #292d39;
-    }
+.details{
+  display:none;
+  margin-top:20px;
+}
 
-    label {
-      display: block;
-      margin: 13px 0 7px;
-      font-size: 14px;
-      color: #c5c7cf;
-    }
+.details.active{
+  display:block;
+}
 
-    input,
-    select {
-      width: 100%;
-      padding: 13px;
-      border-radius: 9px;
-      border: 1px solid #303443;
-      background: #0e1016;
-      color: white;
-      outline: none;
-    }
+.info{
+  background:#211d10;
+  border:1px solid #55471c;
+  color:#ddd18d;
+  border-radius:10px;
+  padding:15px;
+  line-height:1.7;
+  font-size:13px;
+  word-break:break-word;
+}
 
-    input:focus,
-    select:focus {
-      border-color: #7c5cff;
-    }
+.qr{
+  display:block;
+  width:220px;
+  max-width:100%;
+  margin:15px auto 5px;
+  border-radius:10px;
+  background:white;
+  padding:5px;
+}
 
-    .submit-btn {
-      width: 100%;
-      margin-top: 18px;
-      background: #19a974;
-      color: white;
-    }
+input{
+  width:100%;
+  padding:13px;
+  margin-top:8px;
+  background:#0c0e14;
+  color:white;
+  border:1px solid #303542;
+  border-radius:9px;
+  outline:none;
+}
 
-    .notice {
-      background: #211d10;
-      border: 1px solid #51451c;
-      color: #d9c982;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 13px;
-      margin-top: 15px;
-      line-height: 1.5;
-    }
+input:focus{
+  border-color:#8065ff;
+}
 
-    footer {
-      text-align: center;
-      color: #777c88;
-      border-top: 1px solid #20232c;
-      padding: 30px 10px;
-      margin-top: 50px;
-      font-size: 13px;
-    }
+.copy{
+  background:#8065ff;
+  color:white;
+  border:0;
+  padding:7px 10px;
+  border-radius:6px;
+  cursor:pointer;
+  margin-left:5px;
+}
 
-    @media(max-width:600px) {
-      .hero h1 {
-        font-size: 32px;
-      }
+.telegram{
+  display:block;
+  width:100%;
+  margin-top:15px;
+  padding:14px;
+  border-radius:9px;
+  background:#229ED9;
+  color:white;
+  text-align:center;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-      header {
-        padding: 15px 5%;
-      }
+.note{
+  margin-top:14px;
+  color:#9095a1;
+  font-size:12px;
+  line-height:1.6;
+}
 
-      nav a {
-        margin-left: 10px;
-      }
-    }
-  </style>
+footer{
+  border-top:1px solid #20232c;
+  margin-top:50px;
+  padding:30px 10px;
+  text-align:center;
+  color:#777c88;
+  font-size:13px;
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:32px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">CardVault</div>
 
-  <nav>
-    <a href="#cards">Gift Cards</a>
-    <a href="#payment">Payment</a>
-  </nav>
+<div class="logo">CardVault</div>
+
+<nav>
+<a href="#cards">Cards</a>
+<a href="#payment">Payment</a>
+</nav>
+
 </header>
 
+
 <section class="hero">
-  <h1>Premium Gift Cards</h1>
-  <p>
-    Choose your gift card, select your payment method and submit
-    your transaction reference after payment.
-  </p>
+
+<h1>Gaming Gift Cards</h1>
+
+<p>
+Choose your gift card and pay using UPI or USDT.
+Payment is manually verified before fulfilment.
+</p>
+
 </section>
+
 
 <main class="container">
 
-  <h2 class="section-title" id="cards">Available Gift Cards</h2>
+<h2 class="title" id="cards">Available Gift Cards</h2>
 
-  <div class="products">
+<div class="products">
 
-    <div class="product">
-      <div class="product-icon">🎮</div>
-      <h3>Gaming Gift Card</h3>
-      <p>Digital gaming gift card.</p>
-      <div class="price">₹500</div>
-      <button class="buy-btn" onclick="selectCard('Gaming Gift Card - ₹500')">
-        Buy Now
-      </button>
-    </div>
 
-    <div class="product">
-      <div class="product-icon">🎬</div>
-      <h3>Entertainment Card</h3>
-      <p>Digital entertainment gift card.</p>
-      <div class="price">₹1,000</div>
-      <button class="buy-btn" onclick="selectCard('Entertainment Card - ₹1,000')">
-        Buy Now
-      </button>
-    </div>
+<!-- CARD 1 -->
+<div class="card">
 
-    <div class="product">
-      <div class="product-icon">🛍️</div>
-      <h3>Shopping Gift Card</h3>
-      <p>Digital shopping gift card.</p>
-      <div class="price">₹2,000</div>
-      <button class="buy-btn" onclick="selectCard('Shopping Gift Card - ₹2,000')">
-        Buy Now
-      </button>
-    </div>
+<div class="card-image">🎮</div>
 
-    <div class="product">
-      <div class="product-icon">🎁</div>
-      <h3>Premium Gift Card</h3>
-      <p>Premium digital gift card.</p>
-      <div class="price">₹5,000</div>
-      <button class="buy-btn" onclick="selectCard('Premium Gift Card - ₹5,000')">
-        Buy Now
-      </button>
-    </div>
+<h3>Gaming Card ₹500</h3>
 
-  </div>
+<p>Digital gaming gift card.</p>
 
-  <section class="payment" id="payment">
+<div class="price">₹500</div>
 
-    <h2>Payment</h2>
-    <p class="payment-subtitle">
-      Select your preferred payment method.
-    </p>
+<div class="stock">● In Stock</div>
 
-    <div class="method" onclick="showPayment('upi')">
-      <strong>🇮🇳 UPI</strong>
-      <span>Pay using UPI and submit your UTR number.</span>
-    </div>
+<button class="buy"
+onclick="selectCard('Gaming Card ₹500')">
+Buy Now
+</button>
 
-    <div class="method" onclick="showPayment('usdt')">
-      <strong>🪙 USDT — BEP20</strong>
-      <span>Pay using USDT on the BEP20 network.</span>
-    </div>
+</div>
 
-    <div class="order-box" id="orderBox">
 
-      <label>Selected Gift Card</label>
-      <select id="card">
-        <option>Gaming Gift Card - ₹500</option>
-        <option>Entertainment Card - ₹1,000</option>
-        <option>Shopping Gift Card - ₹2,000</option>
-        <option>Premium Gift Card - ₹5,000</option>
-      </select>
+<!-- CARD 2 -->
+<div class="card">
 
-      <label>Your Name</label>
-      <input
-        type="text"
-        id="name"
-        placeholder="Enter your name"
-      >
+<div class="card-image">🎮</div>
 
-      <label>Your Email</label>
-      <input
-        type="email"
-        id="email"
-        placeholder="Enter your email"
-      >
+<h3>Gaming Card ₹1,000</h3>
 
-      <div id="paymentDetails"></div>
+<p>Digital gaming gift card.</p>
 
-      <label>Transaction Reference</label>
-      <input
-        type="text"
-        id="transaction"
-        placeholder="Enter UTR / Transaction ID / TxID"
-      >
+<div class="price">₹1,000</div>
 
-      <button class="submit-btn" onclick="submitOrder()">
-        Submit Order
-      </button>
+<div class="stock">● In Stock</div>
 
-      <div class="notice">
-        Payment will be verified before an order is fulfilled.
-        Do not submit passwords, OTPs, CVVs or card numbers.
-      </div>
+<button class="buy"
+onclick="selectCard('Gaming Card ₹1,000')">
+Buy Now
+</button>
 
-    </div>
+</div>
 
-  </section>
+
+<!-- CARD 3 -->
+<div class="card">
+
+<div class="card-image">🔥</div>
+
+<h3>Gaming Card ₹2,000</h3>
+
+<p>Premium gaming gift card.</p>
+
+<div class="price">₹2,000</div>
+
+<div class="stock">● In Stock</div>
+
+<button class="buy"
+onclick="selectCard('Gaming Card ₹2,000')">
+Buy Now
+</button>
+
+</div>
+
+
+<!-- CARD 4 -->
+<div class="card">
+
+<div class="card-image">🏆</div>
+
+<h3>Gaming Card ₹5,000</h3>
+
+<p>Premium gaming gift card.</p>
+
+<div class="price">₹5,000</div>
+
+<div class="stock">● In Stock</div>
+
+<button class="buy"
+onclick="selectCard('Gaming Card ₹5,000')">
+Buy Now
+</button>
+
+</div>
+
+
+</div>
+
+
+<section class="payment" id="payment">
+
+<h2>Complete Your Order</h2>
+
+<p class="subtitle">
+Select your card and payment method.
+</p>
+
+
+<div class="selected">
+
+Selected Card:
+
+<strong id="selectedCard">
+Choose a card above
+</strong>
+
+</div>
+
+
+<!-- UPI -->
+
+<div class="method" onclick="showUPI()">
+
+<strong>🇮🇳 UPI</strong>
+
+<span>
+Pay using UPI / QR and submit your UTR.
+</span>
+
+</div>
+
+
+<div class="details" id="upiDetails">
+
+<div class="info">
+
+<strong>UPI Payment</strong>
+
+<br><br>
+
+UPI ID:
+
+<strong id="upiText">
+YOUR-UPI-ID@upi
+</strong>
+
+<button class="copy"
+onclick="copyText(UPI_ID)">
+Copy
+</button>
+
+<img src="qr.png"
+class="qr"
+alt="UPI QR Code">
+
+After payment, enter your UTR below.
+
+</div>
+
+
+<input
+id="upiUtr"
+placeholder="Enter UTR number"
+>
+
+
+<a
+class="telegram"
+href="https://t.me/YOUR_USERNAME"
+target="_blank">
+
+📲 Send Payment Details on Telegram
+
+</a>
+
+<p class="note">
+After entering your UTR, copy it and send your
+selected card + UTR to us on Telegram.
+</p>
+
+</div>
+
+
+<!-- USDT -->
+
+<div class="method" onclick="showUSDT()">
+
+<strong>🪙 USDT — BEP20</strong>
+
+<span>
+Pay using USDT on BNB Smart Chain.
+</span>
+
+</div>
+
+
+<div class="details" id="usdtDetails">
+
+<div class="info">
+
+<strong>USDT — BEP20</strong>
+
+<br><br>
+
+Network:
+<strong>BNB Smart Chain (BEP20)</strong>
+
+<br><br>
+
+Wallet Address:
+
+<br>
+
+<strong id="usdtText">
+YOUR-BEP20-WALLET-ADDRESS
+</strong>
+
+<button class="copy"
+onclick="copyText(USDT_ADDRESS)">
+Copy
+</button>
+
+<br><br>
+
+⚠️ Check the address and network carefully
+before sending USDT.
+
+</div>
+
+
+<input
+id="usdtTx"
+placeholder="Enter USDT TxID"
+>
+
+
+<a
+class="telegram"
+href="https://t.me/YOUR_USERNAME"
+target="_blank">
+
+📲 Send Payment Details on Telegram
+
+</a>
+
+<p class="note">
+After payment, copy your TxID and send it with
+your selected card details on Telegram.
+</p>
+
+</div>
+
+</section>
 
 </main>
 
+
 <footer>
-  © 2026 CardVault. All rights reserved.
+
+© 2026 CardVault Gaming
+
 </footer>
+
 
 <script>
 
-  let selectedPayment = "";
+/*
+====================================
+নিজের PAYMENT DETAILS এখানে বসাবি
+====================================
+*/
 
-  function selectCard(cardName) {
-    document.getElementById("card").value = cardName;
-    document.getElementById("payment").scrollIntoView({
-      behavior: "smooth"
-    });
-  }
+const UPI_ID =
+"YOUR-UPI-ID@upi";
 
-  function showPayment(method) {
+const USDT_ADDRESS =
+"YOUR-BEP20-WALLET-ADDRESS";
 
-    selectedPayment = method;
 
-    const box = document.getElementById("orderBox");
-    const details = document.getElementById("paymentDetails");
+/*
+====================================
+নিজের TELEGRAM USERNAME বসাবি
+====================================
 
-    box.style.display = "block";
+Example:
+https://t.me/CardVaultOfficial
 
-    if (method === "upi") {
+*/
 
-      details.innerHTML = `
-        <div class="notice">
-          <strong>UPI Payment</strong><br><br>
-          UPI ID: <strong>YOUR-UPI-ID@upi</strong><br>
-          Replace this placeholder with your own verified UPI ID.
-        </div>
-      `;
+const TELEGRAM_USERNAME =
+"YOUR_USERNAME";
 
-    } else {
 
-      details.innerHTML = `
-        <div class="notice">
-          <strong>USDT — BEP20</strong><br><br>
-          Network: BNB Smart Chain (BEP20)<br>
-          Wallet: <strong>YOUR-BEP20-WALLET-ADDRESS</strong><br><br>
-          Always verify the wallet address before sending funds.
-        </div>
-      `;
+/*
+====================================
+CARD SELECT
+====================================
+*/
 
-    }
+function selectCard(name){
 
-  }
+document.getElementById("selectedCard")
+.innerText=name;
 
-  function submitOrder() {
+document.getElementById("payment")
+.scrollIntoView({
+behavior:"smooth"
+});
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const transaction = document.getElementById("transaction").value.trim();
+}
 
-    if (!selectedPayment) {
-      alert("Please select a payment method.");
-      return;
-    }
 
-    if (!name || !email || !transaction) {
-      alert("Please fill in all required fields.");
-      return;
-    }
+/*
+====================================
+UPI
+====================================
+*/
 
-    alert(
-      "Order submitted successfully! Payment verification will be completed before fulfillment."
-    );
+function showUPI(){
 
-  }
+document.getElementById("upiDetails")
+.classList.add("active");
+
+document.getElementById("usdtDetails")
+.classList.remove("active");
+
+document.getElementById("upiText")
+.innerText=UPI_ID;
+
+document.querySelectorAll(".telegram")
+.forEach(btn=>{
+btn.href="https://t.me/"+TELEGRAM_USERNAME;
+});
+
+}
+
+
+/*
+====================================
+USDT
+====================================
+*/
+
+function showUSDT(){
+
+document.getElementById("usdtDetails")
+.classList.add("active");
+
+document.getElementById("upiDetails")
+.classList.remove("active");
+
+document.getElementById("usdtText")
+.innerText=USDT_ADDRESS;
+
+document.querySelectorAll(".telegram")
+.forEach(btn=>{
+btn.href="https://t.me/"+TELEGRAM_USERNAME;
+});
+
+}
+
+
+/*
+====================================
+COPY
+====================================
+*/
+
+function copyText(text){
+
+navigator.clipboard.writeText(text);
+
+alert("Copied!");
+
+}
 
 </script>
 
 </body>
 </html>
+
+const UPI_ID =
+"vendormalpro@fam";
+
+const USDT_ADDRESS =
+"0x3df062494aa2d979b19292ddde63b73b90198854";
+
+const TELEGRAM_USERNAME =
+"@vendorcvvsssss";
+
+
+
+
+
+
